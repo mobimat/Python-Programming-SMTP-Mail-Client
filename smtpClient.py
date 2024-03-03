@@ -24,7 +24,7 @@ def smtp_client(port=587, mailserver='smtp.example.com', sender='sender@example.
         print('250 reply not received from server.')
 
     # Send MAIL FROM command and handle server response.
-    mailFrom = f"MAIL FROM: <{sender}>\r\n"
+    mailFrom = 'MAIL FROM: <{sender}>\r\n'
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
     print(recv2)
@@ -32,7 +32,7 @@ def smtp_client(port=587, mailserver='smtp.example.com', sender='sender@example.
         print('250 reply not received from server after MAIL FROM command.')
 
     # Send RCPT TO command and handle server response.
-    rcptTo = f"RCPT TO: <{recipient}>\r\n"
+    rcptTo = 'RCPT TO: <{recipient}>\r\n'
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
     print(recv3)
@@ -40,7 +40,7 @@ def smtp_client(port=587, mailserver='smtp.example.com', sender='sender@example.
         print('250 reply not received from server after RCPT TO command.')
 
     # Send DATA command and handle server response.
-    dataCommand = "DATA\r\n"
+    dataCommand = 'DATA\r\n'
     clientSocket.send(dataCommand.encode())
     recv4 = clientSocket.recv(1024).decode()
     print(recv4)
@@ -58,7 +58,7 @@ def smtp_client(port=587, mailserver='smtp.example.com', sender='sender@example.
         print('250 reply not received from server after sending message data.')
 
     # Send QUIT command and handle server response.
-    quitCommand = "QUIT\r\n"
+    quitCommand = 'QUIT\r\n'
     clientSocket.send(quitCommand.encode())
     recv6 = clientSocket.recv(1024).decode()
     print(recv6)
@@ -68,4 +68,4 @@ def smtp_client(port=587, mailserver='smtp.example.com', sender='sender@example.
     clientSocket.close()
 
 if __name__ == '__main__':
-    smtp_client()
+    smtp_client(587, 'smtp.example.com')
